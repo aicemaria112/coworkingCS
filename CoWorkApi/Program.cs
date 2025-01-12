@@ -93,6 +93,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<SecurityMiddleware>();
 app.MapControllers();
 app.Run();
 

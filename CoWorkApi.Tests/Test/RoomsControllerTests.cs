@@ -9,10 +9,14 @@ public class RoomsControllerTests
     private readonly Mock<IMediator> _mediatorMock;
     private readonly RoomsController _controller;
 
+    private readonly Mock<ILogService> _logServiceMock;
+
+
     public RoomsControllerTests()
     {
         _mediatorMock = new Mock<IMediator>();
-        _controller = new RoomsController(_mediatorMock.Object);
+        _logServiceMock = new Mock<ILogService>();
+        _controller = new RoomsController(_mediatorMock.Object, _logServiceMock.Object);
     }
 
 
