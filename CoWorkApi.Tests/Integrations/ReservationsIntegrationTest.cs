@@ -26,7 +26,7 @@ public class ReservationsControllerTests : IClassFixture<WebApplicationFactory<P
     public async Task GetUserReservations_ReturnsOk_WhenUserIsAuthorized()
     {
         // Arrange
-        var token = TokenHelper.GetToken(true);
+        var token = TokenHelper.GenerateTokenValid(true);
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
@@ -58,7 +58,7 @@ public class ReservationsControllerTests : IClassFixture<WebApplicationFactory<P
     public async Task GetAllReservations_ReturnsForbidden_WhenUserIsNotAdmin()
     {
         // Arrange
-        var token = TokenHelper.GetToken();
+        var token = TokenHelper.GenerateTokenValid();
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
@@ -87,7 +87,7 @@ public class ReservationsControllerTests : IClassFixture<WebApplicationFactory<P
     public async Task CreateReservation_ReturnsCreated_WhenCommandIsValid()
     {
         // Arrange
-        var token = TokenHelper.GetToken(true);
+        var token = TokenHelper.GenerateTokenValid(true);
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
@@ -123,7 +123,7 @@ public class ReservationsControllerTests : IClassFixture<WebApplicationFactory<P
     public async Task UpdateReservation_ReturnsOk_WhenReservationIsUpdated()
     {
         // Arrange
-        var token = TokenHelper.GetToken(true);
+        var token = TokenHelper.GenerateTokenValid(true);
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
@@ -156,7 +156,7 @@ public class ReservationsControllerTests : IClassFixture<WebApplicationFactory<P
     public async Task CancelReservation_ReturnsNoContent_WhenReservationIsCancelled()
     {
         // Arrange
-        var token = TokenHelper.GetToken(true);
+        var token = TokenHelper.GenerateTokenValid(true);
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>

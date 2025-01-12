@@ -1,3 +1,4 @@
+
 using CoWorkApi.Domain.Entities;
 using CoWorkApi.Infraestructure.Data;
 using MediatR;
@@ -6,10 +7,11 @@ using Microsoft.EntityFrameworkCore;
 public class CreateReservationCommandHandler : IRequestHandler<CreateReservationCommand, int>
 {
     private readonly AppDbContext _context;
-
-    public CreateReservationCommandHandler(AppDbContext context)
+    private readonly IReservationHistoryService _historyService;
+    public CreateReservationCommandHandler(AppDbContext context, IReservationHistoryService historyService)
     {
         _context = context;
+        _historyService = historyService;
     }
 
     public async Task<int> Handle(CreateReservationCommand request, CancellationToken cancellationToken)
@@ -53,6 +55,11 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
         _context.Reservations.Add(reservation);
         await _context.SaveChangesAsync(cancellationToken);
 
+        await _historyService.AddHistoryAsync(
+            reservation.Id,
+            "active",
+            "Reserva creada",
+            request.UserId);    
         return reservation.Id;
     }
 }

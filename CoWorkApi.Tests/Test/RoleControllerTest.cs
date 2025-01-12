@@ -10,12 +10,15 @@ public class RoleControllerTest
     private readonly Mock<IMediator> _mediatorMock;
     private readonly RoleController _controller;
 
+    private readonly Mock<ILogService> _logServiceMock;
+
     private readonly string userid = "1";
 
     public RoleControllerTest()
     {
         _mediatorMock = new Mock<IMediator>();
-        _controller = new RoleController(_mediatorMock.Object);
+        _logServiceMock = new Mock<ILogService>();
+        _controller = new RoleController(_mediatorMock.Object, _logServiceMock.Object);
     }
 
     [Fact]

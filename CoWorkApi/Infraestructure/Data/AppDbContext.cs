@@ -9,6 +9,8 @@ namespace CoWorkApi.Infraestructure.Data {
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ReservationHistory> ReservationHistories { get; set; }
 
+        public DbSet<LogInfo> LogInfos { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,6 +40,11 @@ namespace CoWorkApi.Infraestructure.Data {
                 .WithMany()
                 .HasForeignKey(rh => rh.ChangedBy)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<LogInfo>()
+                .HasOne(li => li.User)
+                .WithMany()
+                .HasForeignKey(li => li.UserId);
         }
     }
 

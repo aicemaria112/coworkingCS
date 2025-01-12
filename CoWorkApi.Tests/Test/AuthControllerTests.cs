@@ -12,11 +12,12 @@ public class AuthControllerTests
     private readonly AuthController _controller;
 
     private RegisterUserCommand _command;
-
+    private readonly Mock<ILogService> _logServiceMock;
     public AuthControllerTests()
     {
         _mediatorMock = new Mock<IMediator>();
-        _controller = new AuthController(_mediatorMock.Object);
+        _logServiceMock = new Mock<ILogService>();
+        _controller = new AuthController(_mediatorMock.Object, _logServiceMock.Object);
         Random random = new Random();
         int randomInt = random.Next(1000, 5000);
 

@@ -32,7 +32,7 @@ public class RoleControllerTests : IClassFixture<CustomWebApplicationFactory<Pro
             });
         }).CreateClient();
 
-        var token = TokenHelper.GetToken();  // Simulate a valid JWT token with user role
+        var token = TokenHelper.GenerateTokenValid();  // Simulate a valid JWT token with user role
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         var command = new UserRoleCommand
@@ -96,7 +96,8 @@ public class RoleControllerTests : IClassFixture<CustomWebApplicationFactory<Pro
             });
         }).CreateClient();
 
-        var token = TokenHelper.GetToken(true);  // Simulate a valid JWT token with admin role
+        var token = TokenHelper.GenerateTokenValid(true);  // Simulate a valid JWT token with admin role
+        Console.WriteLine($"token:{ token}");
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         var command = new UserRoleCommand
@@ -134,7 +135,7 @@ public class RoleControllerTests : IClassFixture<CustomWebApplicationFactory<Pro
             });
         }).CreateClient();
 
-        var token = TokenHelper.GetToken(false);  // Simulate a valid JWT token with admin role
+        var token = TokenHelper.GenerateTokenValid(false);  // Simulate a valid JWT token with admin role
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         var command = new UserRoleCommand

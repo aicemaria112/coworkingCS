@@ -1,5 +1,12 @@
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_CoWorkApi.Tests
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_CoWorkApi.Tests
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.csproj.AssemblyReference.cache
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\MvcTestingAppManifest.json
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.AssemblyInfoInputs.cache
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.AssemblyInfo.cs
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.csproj.CoreCompileInputs.cache
+C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.sourcelink.json
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\testhost.dll
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\CoWorkApi.deps.json
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\CoWorkApi.runtimeconfig.json
@@ -462,13 +469,6 @@ C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\run
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\CoWorkApi.dll
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\bin\Debug\net9.0\CoWorkApi.pdb
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.csproj.AssemblyReference.cache
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\MvcTestingAppManifest.json
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.AssemblyInfoInputs.cache
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.AssemblyInfo.cs
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.csproj.CoreCompileInputs.cache
-C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.sourcelink.json
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkAp.03412530.Up2Date
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\CoWorkApi.Tests.dll
 C:\Users\jandr\OneDrive\Desktop\coworkingCS\CoWorkApi.Tests\obj\Debug\net9.0\refint\CoWorkApi.Tests.dll

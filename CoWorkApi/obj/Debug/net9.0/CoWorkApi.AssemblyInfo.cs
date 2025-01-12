@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoWorkApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b33ee9daa9341717bcc1852b07212330f976a6ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7445f71d87d09e82fedaf71e6a82ee887e9cfb6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoWorkApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoWorkApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

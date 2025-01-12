@@ -9,13 +9,15 @@ public class GetAllReservationsControllerTest
 {
     private readonly Mock<IMediator> _mediatorMock;
     private readonly ReservationsController _controller;
+    private readonly Mock<ILogService> _logServiceMock;
 
 
 
     public GetAllReservationsControllerTest()
     {
         _mediatorMock = new Mock<IMediator>();
-        _controller = new ReservationsController(_mediatorMock.Object);
+        _logServiceMock = new Mock<ILogService>();
+        _controller = new ReservationsController(_mediatorMock.Object, _logServiceMock.Object);
     }
 
 [Fact]

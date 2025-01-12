@@ -9,11 +9,12 @@ public class UserControllerTest
 {
     private readonly Mock<IMediator> _mediatorMock;
     private readonly UserController _controller;
-
+    private readonly Mock<ILogService> _logServiceMock; 
     public UserControllerTest()
     {
         _mediatorMock = new Mock<IMediator>();
-        _controller = new UserController(_mediatorMock.Object);
+        _logServiceMock = new Mock<ILogService>();
+        _controller = new UserController(_mediatorMock.Object, _logServiceMock.Object);
     }
 
     [Fact]
