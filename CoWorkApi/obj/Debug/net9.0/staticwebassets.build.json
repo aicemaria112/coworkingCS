@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "IJ2bWlBkFKfU6CjzxgcKJ4bYaqtplZdWmxb5LaSUDZs=",
+  "Source": "CoWorkApi",
+  "BasePath": "_content/CoWorkApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

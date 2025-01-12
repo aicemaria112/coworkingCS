@@ -1,6 +1,0 @@
-@CockWorkApi_HostAddress = http://localhost:5259
-
-GET {{CockWorkApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
