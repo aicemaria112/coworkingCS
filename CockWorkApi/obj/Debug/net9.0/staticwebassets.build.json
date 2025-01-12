@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "S6TpycyYMuYYAL9bWYFS2oCAs3aVdndx5I2zo43uF0E=",
+  "Source": "CockWorkApi",
+  "BasePath": "_content/CockWorkApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
