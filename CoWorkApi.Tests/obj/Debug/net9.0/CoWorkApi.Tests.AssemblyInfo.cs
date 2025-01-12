@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoWorkApi.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed81beebf204eb27cbbba96ccc7ed7033bdb407d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3180a9b0ce657ee1c5882d4a81c923b04025f7f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoWorkApi.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoWorkApi.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
