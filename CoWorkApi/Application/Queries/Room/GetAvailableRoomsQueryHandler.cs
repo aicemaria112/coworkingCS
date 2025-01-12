@@ -2,24 +2,33 @@ using MediatR;
 using CoWorkApi.Domain.Entities;
 using CoWorkApi.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQuery, List<RoomDto>>
 {
     private readonly AppDbContext _dbContext;
+    private readonly IMemoryCache _cache;
+    private const string CacheKeyPrefix = "AvailableRooms";
 
-    public GetAvailableRoomsQueryHandler(AppDbContext dbContext)
+    public GetAvailableRoomsQueryHandler(AppDbContext dbContext, IMemoryCache cache)
     {
         _dbContext = dbContext;
+        _cache = cache;
     }
 
     public async Task<List<RoomDto>> Handle(GetAvailableRoomsQuery request, CancellationToken cancellationToken)
     {
-        // Comenzamos con la consulta base de salas disponibles
+        string cacheKey = $"{CacheKeyPrefix}_{request.MinimumCapacity}_{request.Location}_{request.NameContains}";
+
+        if (_cache.TryGetValue(cacheKey, out List<RoomDto>? cachedRooms))
+        {
+            return cachedRooms;
+        }
+
         var query = _dbContext.Rooms
-            .Where(r => r.IsAvailable) // Solo salas disponibles
+            .Where(r => r.IsAvailable)
             .AsQueryable();
 
-        // Aplicar filtros opcionales
         if (request.MinimumCapacity.HasValue)
         {
             query = query.Where(r => r.Capacity >= request.MinimumCapacity.Value);
@@ -35,7 +44,6 @@ public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQu
             query = query.Where(r => r.Name.Contains(request.NameContains));
         }
 
-        // Mapear resultados a DTO
         var availableRooms = await query
             .Select(r => new RoomDto
             {
@@ -43,10 +51,12 @@ public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQu
                 Name = r.Name,
                 Capacity = r.Capacity,
                 Location = r.Location,
-                Description = r.Description != null ? r.Description : string.Empty,
+                Description = r.Description ?? string.Empty,
                 IsAvailable = r.IsAvailable
             })
             .ToListAsync(cancellationToken);
+
+        _cache.Set(cacheKey, availableRooms, TimeSpan.FromMinutes(5));
 
         return availableRooms;
     }
