@@ -208,6 +208,14 @@ curl --request DELETE \
   --header 'Authorization: Bearer {Token}'
 ```
 
+
+## Swagger UI para entorno de desarrollo
+
+```bash
+http://localhost:5259/swagger/index.html
+```
+
+
 ## 🔐 Autenticación
 
 La API utiliza tokens JWT para la autenticación. Incluir el token en el encabezado Authorization:
