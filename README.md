@@ -262,6 +262,6 @@ dotnet test
 
 ## Diagrama ER
 
-![Diagrama ER](./Diagram_Er.png)
+![Diagrama ER](./Diagram_Er.jpg)
 
 Este README proporciona una visión completa del sistema en español, manteniendo un formato limpio y profesional. Puedes personalizar secciones específicas según características o requisitos adicionales de tu implementación.
