@@ -38,6 +38,16 @@ El sistema incluye registro completo a través de ILogService:
 - Autorización basada en roles
 - Validación y sanitización de entradas
 
+## 📋 Historial de Cambios
+- Cada reserva mantiene un registro de modificaciones
+- Se almacena fecha de creación, modificación y cancelación
+- Sistema de auditoría para tracking de cambios
+
+## 💨 Optimización y Caché
+- Implementación de caché en memoria para consultas frecuentes
+- Caché distribuido para listado de salas
+- Invalidación automática de caché en actualizaciones
+
 ## 🚨 Manejo de Errores
 
 La API implementa un manejo consistente de errores con los siguientes códigos de estado:
