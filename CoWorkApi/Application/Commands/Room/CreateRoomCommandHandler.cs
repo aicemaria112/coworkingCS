@@ -22,7 +22,8 @@ public class CreateRoomCommandHandler : IRequestHandler<CreateRoomCommand, int>
             Capacity = request.Capacity,
             Description = request.Description,
             Location = request.Location,
-            IsAvailable = request.IsAvailable
+            IsAvailable = request.IsAvailable,
+            ImageUrl = request.ImageUrl
         };
 
         _context.Rooms.Add(room);

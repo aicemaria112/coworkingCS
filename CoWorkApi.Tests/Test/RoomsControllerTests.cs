@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
@@ -11,12 +12,15 @@ public class RoomsControllerTests
 
     private readonly Mock<ILogService> _logServiceMock;
 
+    private readonly Mock<IWebHostEnvironment> _environmentMock;
+
 
     public RoomsControllerTests()
     {
         _mediatorMock = new Mock<IMediator>();
         _logServiceMock = new Mock<ILogService>();
-        _controller = new RoomsController(_mediatorMock.Object, _logServiceMock.Object);
+        _environmentMock = new Mock<IWebHostEnvironment>();
+        _controller = new RoomsController(_mediatorMock.Object, _logServiceMock.Object, _environmentMock.Object);
     }
 
 

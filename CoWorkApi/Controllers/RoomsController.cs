@@ -9,10 +9,13 @@ public class RoomsController : ControllerBase
     private readonly IMediator _mediator;
     private readonly ILogService _logService;
 
-    public RoomsController(IMediator mediator, ILogService logService)
+    private readonly IWebHostEnvironment _environment;
+
+    public RoomsController(IMediator mediator, ILogService logService, IWebHostEnvironment environment)
     {
         _mediator = mediator;
         _logService = logService;
+        _environment = environment;
     }
 
     [HttpGet("available")]
@@ -34,7 +37,7 @@ public class RoomsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateRoom([FromBody] CreateRoomCommand command)
+    public async Task<IActionResult> CreateRoom([FromForm] CreateRoomCommand command)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (!int.TryParse(userId, out int _userId))
@@ -50,6 +53,24 @@ public class RoomsController : ControllerBase
         {
             await _logService.AddLogAsync("POST", "/api/rooms", 403, _userId);
             return StatusCode(403, new Dictionary<string, string> { { "Message", "Only admin can perform this action" } });
+        }
+
+         if (command.Image != null)
+        {
+            var uploadsFolder = Path.Combine(_environment.ContentRootPath, "Uploads", "Images");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + command.Image.FileName;
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await command.Image.CopyToAsync(fileStream);
+            }
+            command.ImageUrl = "/uploads/images/" + uniqueFileName;
         }
         var result = await _mediator.Send(command);
         await _logService.AddLogAsync("POST", "/api/rooms", 201, _userId);

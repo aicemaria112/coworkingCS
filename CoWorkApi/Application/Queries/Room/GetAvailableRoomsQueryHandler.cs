@@ -52,7 +52,8 @@ public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQu
                 Capacity = r.Capacity,
                 Location = r.Location,
                 Description = r.Description ?? string.Empty,
-                IsAvailable = r.IsAvailable
+                IsAvailable = r.IsAvailable,
+                ImageUrl = r.ImageUrl ?? ""
             })
             .ToListAsync(cancellationToken);
 

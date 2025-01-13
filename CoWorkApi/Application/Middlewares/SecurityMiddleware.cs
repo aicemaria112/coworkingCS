@@ -59,7 +59,7 @@ public class SecurityMiddleware
         // Validación de patrones comunes de vulnerabilidades
         string[] sqlInjectionPatterns = new string[]
         {
-            "--", ";--", "/*", "*/", "@@", "char", "nchar", "nvarchar", "select", "insert", "update", "delete", "drop", "exec", "execute", "xp_"
+           "@@", "char", "nchar", "nvarchar", "select", "insert", "update", "delete", "drop", "exec", "execute", "xp_"
         };
 
         // Comprobación de SQL Injection
