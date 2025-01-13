@@ -3,6 +3,7 @@ using CoWorkApi.Domain.Entities;
 using CoWorkApi.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Application.Queries.RoomReservationConfig;
 
 public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQuery, List<RoomDto>>
 {
@@ -53,7 +54,15 @@ public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQu
                 Location = r.Location,
                 Description = r.Description ?? string.Empty,
                 IsAvailable = r.IsAvailable,
-                ImageUrl = r.ImageUrl ?? ""
+                ImageUrl = r.ImageUrl ?? "",
+                RoomReservationsConfigs = r.RoomReservationsConfigs.Select(rrc => new RoomReservationsConfigDto
+                {
+                    Id = rrc.Id,
+                    TimeRangeName = rrc.TimeRangeName,
+                    TimeRangeValue = rrc.TimeRangeValue,
+                    Price = rrc.Price,
+                    Name = rrc.Name
+                }).ToList()
             })
             .ToListAsync(cancellationToken);
 

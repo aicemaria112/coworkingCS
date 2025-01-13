@@ -161,14 +161,15 @@ curl --request GET \
 # POST /api/rooms
 curl --request POST \
   --url http://localhost:5259/api/rooms \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "name": "Sala de Prueba",
-  "capacity": 10,
-  "location": "Ciudad de México",
-  "description": "Sala de prueba para pruebas",
-  "isAvailable": true
-}'
+  --header 'Authorization: Bearer {Token}' \
+  --header 'Content-Type: multipart/form-data' \
+  --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
+  --form 'Name=Sala con imagen' \
+  --form Capacity=1000 \
+  --form 'Description=Esto es una sala con imagen' \
+  --form 'Location=Piso 1' \
+  --form Image= \
+  --form IsAvailable=true
 ```
 ### Reservas
 
@@ -218,6 +219,19 @@ curl --request DELETE \
   --header 'Authorization: Bearer {Token}'
 ```
 
+#### Configurar las reservaciones de una sala
+
+```bash
+curl --request POST \
+  --url http://localhost:5259/api/RoomReservationConfig \
+  --header 'Authorization: Bearer {Token}' \
+  --header 'Content-Type: application/json' \
+  --data '{"roomId":1,
+"TimeRangeName":"dia",
+"timeRangeValue":1,
+"name":"reserva por dia",
+"price":500}'
+```
 
 ## Swagger UI para entorno de desarrollo
 

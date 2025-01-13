@@ -1,3 +1,5 @@
+using Application.Queries.RoomReservationConfig;
+
 public class RoomDto
 {
     public int Id { get; set; }
@@ -8,4 +10,5 @@ public class RoomDto
 
     public string ImageUrl {get; set;} = string.Empty;
     public bool IsAvailable { get; set; }
+    public List<RoomReservationsConfigDto> RoomReservationsConfigs { get; set; } = new List<RoomReservationsConfigDto>();
 }

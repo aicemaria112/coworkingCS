@@ -11,6 +11,8 @@ namespace CoWorkApi.Infraestructure.Data {
 
         public DbSet<LogInfo> LogInfos { get; set; }
 
+        public DbSet<RoomReservationsConfig> RoomReservationsConfigs { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,6 +47,12 @@ namespace CoWorkApi.Infraestructure.Data {
                 .HasOne(li => li.User)
                 .WithMany()
                 .HasForeignKey(li => li.UserId);
+
+            modelBuilder.Entity<RoomReservationsConfig>()
+                .HasOne(rrc => rrc.Room)
+                .WithMany(r => r.RoomReservationsConfigs)
+                .HasForeignKey(rrc => rrc.RoomId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

@@ -20,5 +20,6 @@ public class Room
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Fecha actual
 
      public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+     public ICollection<RoomReservationsConfig> RoomReservationsConfigs { get; set; } = new List<RoomReservationsConfig>();
 }
 }
