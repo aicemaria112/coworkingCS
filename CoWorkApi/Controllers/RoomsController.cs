@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -17,6 +18,46 @@ public class RoomsController : ControllerBase
         _logService = logService;
         _environment = environment;
     }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> GetAdminRooms(
+        [FromQuery] string? show = "all")
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!int.TryParse(userId, out int _userId))
+        {
+            _userId = 0;
+        }
+        if (_userId == 0)
+        {
+            return Unauthorized(new Dictionary<string, string> { { "Message", "You must be logged to do that" } });
+        }
+        var role = User.FindFirstValue(ClaimTypes.Role);
+        if (role != "admin")
+        {
+            await _logService.AddLogAsync("GET", "/api/rooms", 403, _userId);
+            return StatusCode(403, new Dictionary<string, string> { { "Message", "Only admin can perform this action" } });
+        }
+
+        var query = new GetAvailableRoomsAdminQuery
+        {
+            Show = show
+        };
+        try
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+
+        }
+        catch (BadHttpRequestException e)
+        {
+
+            return BadRequest(e.Message);
+        }
+
+    }
+
 
     [HttpGet("available")]
     public async Task<IActionResult> GetAvailableRooms(
@@ -55,7 +96,7 @@ public class RoomsController : ControllerBase
             return StatusCode(403, new Dictionary<string, string> { { "Message", "Only admin can perform this action" } });
         }
 
-         if (command.Image != null)
+        if (command.Image != null)
         {
             var uploadsFolder = Path.Combine(_environment.ContentRootPath, "Uploads", "Images");
             if (!Directory.Exists(uploadsFolder))
