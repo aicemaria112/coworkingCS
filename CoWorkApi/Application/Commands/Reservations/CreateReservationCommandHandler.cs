@@ -35,6 +35,7 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
         bool exists = await _context.Reservations
             .AnyAsync(r => r.RoomId == request.RoomId &&
                            r.StartTime < request.EndTime &&
+                           r.Status != "cancelled" &&
                            r.EndTime > request.StartTime, cancellationToken);
 
         if (exists)
